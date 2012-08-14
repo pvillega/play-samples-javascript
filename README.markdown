@@ -1,15 +1,14 @@
-# Authentication
+# Javascript and UI samples
 
-This project contains samples on how to manage authentication/authorization in Play Framework (Scala) v.2.x
+This project contains samples on some Javascript libraries as well as UI components, using Play Framework (Scala) v.2.x
 
-The aim is to have a reference implementation to be used later on if authentication/authorization are needed in a project.
+The aim is to have a reference implementation to be used later on if these elements are needed in a project.
 
 ## References
 
 The sample uses code from the following projects:
 
-* https://github.com/pvillega/Play20StartApp
-* https://github.com/jaliss/securesocial
+*
 
 ## License
 

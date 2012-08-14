@@ -1,0 +1,25 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+@main("I18N") {
+
+@* load javascript I18n *@
+<script type="text/javascript" src="@routes.I18N.jsMessages"></script>
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows I18N values used in Javascript. The values are obtained from the 'messages' file in Play, allowing you to have 1 unique file a a source of internationalized strings.</p>
+    <p>The code uses the module at <a href="https://github.com/julienrf/play-jsmessages">https://github.com/julienrf/play-jsmessages</a>.</p>
+    <br/>
+    <a class="btn btn-danger" onclick="alert(Messages('test.message'));">Press to see an I18N message</a>
+    <a class="btn" onclick="alert(Messages('test.message2', 'ADDED'));">Press to see a second I18N message</a>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("I18n");
+    });
+</script>
+
+    
+}

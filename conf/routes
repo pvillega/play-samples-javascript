@@ -13,6 +13,8 @@ GET     /i18n/strings               controllers.I18N.jsMessages
 GET     /routing                    controllers.Routing.index
 GET     /routing/routes             controllers.Routing.javascriptRoutes
 
+# Gridster
+GET     /gridster                   controllers.Gridster.index
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

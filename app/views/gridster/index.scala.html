@@ -1,0 +1,58 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+@* a CSS file is loaded in main.scala.html *@
+@moreScripts = {
+<script src="@routes.Assets.at("javascripts/jquery.gridster.min.js")" type="text/javascript"></script>
+}
+
+@main("Gridster", moreScripts) {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows a sample of use og Gridster, a library to create dynamic grids in your application.</p>
+    <p>The code uses the library at <a href="http://gridster.net/">http://gridster.net/</a>.</p>
+    <p>The code is client side and follows the demo documentation in the site. First we create a structure of 'div' and 'li' to define the grid.</p>
+    <p>The next step is to initialize it via javascript. With that we have a functional grid in our page..</p>
+    <br/>
+    <section class="demo">
+        @* Gridster structure *@
+        <div class="gridster">
+            <ul>
+                <li class="gridCell" data-row="1" data-col="1" data-sizex="1" data-sizey="1">pos [1,1] size (1,1)</li>
+                <li class="gridCell" data-row="2" data-col="1" data-sizex="1" data-sizey="1">pos [2,1] size (1,1)</li>
+                <li class="gridCell" data-row="3" data-col="1" data-sizex="1" data-sizey="1">pos [3,1] size (1,1)</li>
+
+                <li class="gridCell" data-row="1" data-col="2" data-sizex="2" data-sizey="1">pos [1,2] size (2,1)</li>
+                <li class="gridCell" data-row="2" data-col="2" data-sizex="2" data-sizey="2">pos [2,2] size (2,2)</li>
+
+                <li class="gridCell" data-row="1" data-col="4" data-sizex="1" data-sizey="1">pos [1,4] size (1,1)</li>
+                <li class="gridCell" data-row="2" data-col="4" data-sizex="2" data-sizey="1">pos [2,4] size (2,1)</li>
+                <li class="gridCell" data-row="3" data-col="4" data-sizex="1" data-sizey="1">pos [3,4] size (1,1)</li>
+
+                <li class="gridCell" data-row="1" data-col="5" data-sizex="1" data-sizey="1">pos [1,5] size (1,1)</li>
+                <li class="gridCell" data-row="3" data-col="5" data-sizex="1" data-sizey="1">pos [3,5] size (1,1)</li>
+
+                <li class="gridCell" data-row="1" data-col="6" data-sizex="1" data-sizey="1">pos [1,6] size (1,1)</li>
+                <li class="gridCell" data-row="2" data-col="6" data-sizex="1" data-sizey="2">pos [2,6] size (1,2)</li>
+            </ul>
+        </div>
+    </section>
+
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("Gridster");
+
+        // The initialization accepts a map with several parameters
+        $(".gridster ul").gridster({
+            widget_margins: [10, 10],
+            widget_base_dimensions: [140, 140]
+        });
+    });
+</script>
+
+    
+}

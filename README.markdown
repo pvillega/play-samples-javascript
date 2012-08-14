@@ -9,6 +9,7 @@ The aim is to have a reference implementation to be used later on if these eleme
 The sample uses code from the following projects:
 
 * https://github.com/julienrf/play-jsmessages
+* http://gridster.net/
 
 ## License
 

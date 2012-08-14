@@ -1,0 +1,30 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+@main("Routing in Javascript") {
+
+@* load javascript routing *@
+<script type="text/javascript" src="@routes.Routing.javascriptRoutes"></script>
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows how to obtain routes to be used in Javascript from teh routes defined in your 'routes' file.</p>
+    <p>It uses no modules.</p>
+    <p>The controller (object Routing) has a method (javascriptRoutes) that stores in the 'jsRoutes' object the paths defined. </p>
+    <p>At this point you can access that object to send requests to the generated paths. If the url requires parameters, we can provide them:</p>
+    <pre><code>jsRoutes.controllers.Demos.listDemos(page = 0, orderBy = 1, nameFilter = '', versionFilter = -1, tagFilter = [value]).url</code></pre>
+    <br/>
+
+    Click to access <a href="#" onclick="window.location=jsRoutes.controllers.Application.index().url">jsRoutes.controllers.Application.index().url</a> <br/>
+    Click to access <a href="#" onclick="window.location=jsRoutes.controllers.I18N.index().url">jsRoutes.controllers.I18N.index().url</a>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("Routing");
+    });
+</script>
+
+    
+}

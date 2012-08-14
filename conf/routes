@@ -7,7 +7,11 @@ GET     /                           controllers.Application.index
 
 # I18N in Javascript
 GET     /i18n                       controllers.I18N.index
-GET     /i18n-strings               controllers.I18N.jsMessages
+GET     /i18n/strings               controllers.I18N.jsMessages
+
+# Routing in Javascript
+GET     /routing                    controllers.Routing.index
+GET     /routing/routes             controllers.Routing.javascriptRoutes
 
 
 # Map static resources from the /public folder to the /assets URL path

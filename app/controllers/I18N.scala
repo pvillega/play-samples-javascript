@@ -19,22 +19,6 @@ object I18N extends Controller {
   }
 
   /**
-   * Makes some routes available via javascript
-   *
-  def javascriptRoutes = Action {
-    import routes.javascript._
-
-    Ok(Cache.getOrElse("javascriptRoutes", 60*60*24){
-      Routes.javascriptRouter("jsRoutes")(
-        Demos.listDemos, Modules.listModules, Modules.fetchReleases, Modules.editRelease, Modules.viewRelease
-      )
-    }
-    ).as("text/javascript")
-  }
-   <script type="text/javascript" src="@routes.Application.javascriptRoutes"></script>
-   */
-
-  /**
    * Exports the subset of I18N we may need on Javascript
    * @return the subset of I18N we may need on Javascript
    */

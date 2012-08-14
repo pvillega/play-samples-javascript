@@ -6,6 +6,7 @@ function setNavbar(id) {
     //remove all selectors
     $('#menuHome').removeClass('active');
     $('#menuI18n').removeClass('active');
+    $('#menuRouting').removeClass('active');
     //set given one
     $("#menu"+id).addClass('active');
 }

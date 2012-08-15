@@ -1,0 +1,96 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+@moreScripts = {
+<script src="@routes.Assets.at("javascripts/mailcheck.min.js")" type="text/javascript"></script>
+}
+
+@main("I18N", moreScripts) {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows usage of MailCheck, a javascript library that suggests a right domain when users misspell it in an email address.</p>
+    <p>The code uses the library from <a href="https://github.com/kicksend/mailcheck">https://github.com/kicksend/mailcheck</a>.</p>
+    <p>You attach MailCheck to the "on blur" event of an 'input' control. It will receive the text given by the user and try to find a corresponding domain in the list.</p>
+    <ul>
+        <li>If a correction is found, a callback method will be triggered in which Javascript can be used to notify the user of the possible typo</li>
+        <li>If no correction is found a different callback will be called</li>
+    </ul>
+    <br/>
+    <p>Write an email (with or without typos in the domain part) and press 'Tab' to take the focus away of the control. The message will show at the right of the input field.</p>
+    <input id="email" name="email" type="text" />
+    <span id="checkEmail"></span>
+    </div>
+</div>
+
+<script>
+    $(function(){
+        //the list of domains and the string distance are optional, but can be customized for your local needs
+        var domains = ['hotmail.com', 'gmail.com', 'aol.com'];
+        var topLevelDomains = ["com", "net", "org"];
+        var superStringDistance = function(string1, string2) {
+            // a string distance algorithm of your choosing
+            // sift3: http://siderite.blogspot.com/2007/04/super-fast-and-accurate-string-distance.html
+            if (s1 == null || s1.length === 0) {
+                if (s2 == null || s2.length === 0) {
+                    return 0;
+                } else {
+                    return s2.length;
+                }
+            }
+
+            if (s2 == null || s2.length === 0) {
+                return s1.length;
+            }
+
+            var c = 0;
+            var offset1 = 0;
+            var offset2 = 0;
+            var lcs = 0;
+            var maxOffset = 5;
+
+            while ((c + offset1 < s1.length) && (c + offset2 < s2.length)) {
+                if (s1.charAt(c + offset1) == s2.charAt(c + offset2)) {
+                    lcs++;
+                } else {
+                    offset1 = 0;
+                    offset2 = 0;
+                    for (var i = 0; i < maxOffset; i++) {
+                        if ((c + i < s1.length) && (s1.charAt(c + i) == s2.charAt(c))) {
+                            offset1 = i;
+                            break;
+                        }
+                        if ((c + i < s2.length) && (s1.charAt(c) == s2.charAt(c + i))) {
+                            offset2 = i;
+                            break;
+                        }
+                    }
+                }
+                c++;
+            }
+            return (s1.length + s2.length) /2 - lcs;
+        }
+
+        // Links MailCheck to the 'blur' event
+        $('#email').on('blur', function() {
+            $(this).mailcheck({
+                //domains: domains,                       // optional, uncomment to use the array above
+                //topLevelDomains: topLevelDomains,       // optional, uncomment to use the array above
+                //distanceFunction: superStringDistance,  // optional, uncomment to use the method above
+                suggested: function(element, suggestion) {
+                    // callback code, recommended, called when there is a suggestion for the given domain
+                    $('#checkEmail').text("Suggestion received: " + suggestion.full);
+                },
+                empty: function(element) {
+                    // callback code, recommended, called when there is no suggestion for the given domain
+                    $('#checkEmail').text("No suggestion received");
+                }
+            });
+        });
+
+        // code for the navigation bar, ignore in this example
+        setNavbar("Mailcheck");
+    });
+</script>
+
+    
+}

@@ -8,6 +8,7 @@ function setNavbar(id) {
     $('#menuI18n').removeClass('active');
     $('#menuRouting').removeClass('active');
     $('#menuGridster').removeClass('active');
+    $('#menuMailcheck').removeClass('active');
     //set given one
     $("#menu"+id).addClass('active');
 }

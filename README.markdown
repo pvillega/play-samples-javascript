@@ -10,6 +10,7 @@ The sample uses code from the following projects:
 
 * https://github.com/julienrf/play-jsmessages
 * http://gridster.net/
+* https://github.com/kicksend/mailcheck
 
 ## License
 

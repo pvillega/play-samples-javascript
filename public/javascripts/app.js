@@ -9,6 +9,7 @@ function setNavbar(id) {
     $('#menuRouting').removeClass('active');
     $('#menuGridster').removeClass('active');
     $('#menuMailcheck').removeClass('active');
+    $('#menuSessionjs').removeClass('active');
     //set given one
     $("#menu"+id).addClass('active');
 }

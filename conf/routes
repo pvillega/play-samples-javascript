@@ -19,6 +19,9 @@ GET     /gridster                   controllers.Gridster.index
 # Mailcheck
 GET     /mailcheck                  controllers.Mailcheck.index
 
+# Session.js
+GET     /session.js                 controllers.SessionJs.index
+
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

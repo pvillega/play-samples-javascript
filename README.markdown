@@ -6,7 +6,7 @@ The aim is to have a reference implementation to be used later on if these eleme
 
 ## References
 
-The sample uses code from the following projects:
+The sample uses code several projects, including:
 
 * https://github.com/julienrf/play-jsmessages
 * http://gridster.net/

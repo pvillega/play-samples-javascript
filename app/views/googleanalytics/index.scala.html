@@ -1,0 +1,73 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+@main("Google Analytics") {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows a sample of use of Google Analytics, an app by Google to track user usage on your application.</p>
+    <p>The code is client side and contains samples on relevant concepts.</p>
+    <br/>
+    <h2>Track actions</h2>
+    <p>Analytics allows you to track user actions, for example to know to which pages is a user navigating during the session, including the order of navigation.
+        The Official Analytics <a href="https://developers.google.com/analytics/devguides/collection/gajs/gaTrackingCampaigns">documentation</a> shows the multiple options available. </p>
+    <p>Next there are some samples on how to add tracking to certain components (check source-code):</p>
+    <br/>
+
+    <p>Using the action parameters we can follow the user interaction with same-page controls. For example, we could see when the user starts or stops a video:</p>
+    <button onclick="_gaq.push(['_trackEvent', 'button3', 'clicked'])">Button with 'click' tracking</button>
+    <br/><br/>
+
+    <p>Event tracking allows us to provide specific categories and names to the actions, as well as optional labels and values to the event.
+        Following the previous example, we could provide a label with the name of the video and a value saying the download time.</p>
+    <a href="#" onClick="_gaq.push(['_trackEvent', 'Category', 'Action', 'Label', 'Value']);">Anchor tracking Action on click</a> <br/>
+    <a href="#" onClick="_gaq.push(['_trackEvent', 'Category', 'Action2', 'Label', 'Value']);">Anchor tracking another Action on click</a>
+    <br/><br/>
+
+    <p>We can extend event tracking to a download itself, although we may want to track it as a virtual pageview, as follows: </p>
+    <a href="#" onclick="_gaq.push(['_trackPageview', 'path of item we download.extension']);">Track virtual pageview</a>
+    <br/><br/>
+
+    <p>Following the same syntax we could push an event on Ajax calls and any other Javascript related code, allowing us to track almost any interaction between user and application.</p>
+    <p>One interesting usage is to track client side (javascript) errors using Analytics, so we can both get notification on the errors and see how they impact user conversion/behaviour.
+        A simple way of doing this follows:</p>
+    <pre>
+        <code>
+            // method to log errors into Google Analytics
+            // Category can be used to differentiate between files/libraries/etc
+            function logError(category, details) {
+                _gaq.push(['_trackEvent', 'JSError', 'Action2', 'Page url', details]);
+            }
+
+            // replace window.onerror by the new method
+            window.onerror = function(message, file, line) {
+                logError(file + ':' + line + '\n\n' + message);
+            };
+
+            //we can also use the new method in Ajax calls, client-side scripts, etc.
+        </code>
+    </pre>
+    <p>This system is not ideal as probably your code will be minimized, but at least it provides a way to learn about client-side errors which, otherwise, would be unknown to the developers.</p>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("GoogleAnalytics");
+
+        // Load the code from configuration. Usually this would be in main.scala.html
+        var googleAnalyticsCode= '@play.api.Play.current.configuration.getString("google.analytics").getOrElse("")';
+
+        // uncomment to disable tracking for the page
+        //window['ga-disable-'+googleAnalyticsCode] = true;
+
+        // Google analytics script, load at the end - Usually this would be loaded in main.scala.html
+        var _gaq=[['_setAccount', googleAnalyticsCode],['_trackPageview']];
+        (function(d,t){var g=d.createElement(t),s=d.getElementsByTagName(t)[0];
+        g.src=('https:'==location.protocol?'//ssl':'//www')+'.google-analytics.com/ga.js';
+        s.parentNode.insertBefore(g,s)}(document,'script'));
+    });
+</script>
+
+    
+}

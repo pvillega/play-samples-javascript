@@ -11,6 +11,7 @@ function setNavbar(id) {
     $('#menuMailcheck').removeClass('active');
     $('#menuSessionjs').removeClass('active');
     $('#menuMarkdown').removeClass('active');
+    $('#menuGoogleAnalytics').removeClass('active');
     //set given one
     $("#menu"+id).addClass('active');
 }

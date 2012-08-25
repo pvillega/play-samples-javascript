@@ -18,3 +18,4 @@ dist
 *.iws
 *.iml
 *~
+launch.sh

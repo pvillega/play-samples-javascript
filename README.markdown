@@ -13,6 +13,7 @@ The sample uses code several projects, including:
 * https://github.com/kicksend/mailcheck
 * https://github.com/codejoust/session.js
 * http://code.google.com/p/pagedown/
+* http://d3js.org/
 
 ## License
 

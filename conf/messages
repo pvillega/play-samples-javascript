@@ -1,2 +1,5 @@
 test.message=This is an I18N test message
 test.message2=This is another I18N test message with some text {0} via parameters
+
+
+richText.preview=Preview

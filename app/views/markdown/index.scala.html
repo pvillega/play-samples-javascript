@@ -1,0 +1,67 @@
+@(sampleForm: Form[models.Sample], markdownText: String, markdownAsHtml: String)(implicit request: play.api.mvc.RequestHeader)
+
+@import tag._
+
+@*
+    A css file (pagedown.min.css) is needed for the editor
+    An image file, wmd-buttons.png, is required to display controls on edit.
+    An entry on 'messages' file is required for the editor.
+*@
+@moreScripts = {
+<script src="@routes.Assets.at("javascripts/pagedown.min.js")" type="text/javascript"></script>
+}
+
+@main("Gridster", moreScripts) {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows a sample of use of Pagedown, a library to allow rich text input stored as Markdown (<a href="http://daringfireball.net/projects/markdown/syntax">Syntax Documentation</a>).</p>
+    <p>The code uses the library at <a href="http://code.google.com/p/pagedown/">http://code.google.com/p/pagedown/</a>. The 3 main files have been minified and merged into 1 Javascript file.</p>
+    <p>The code has 3 elements:</p>
+    <ul>
+        <li>First we see an editor window in which the user can add code. The editor has a "preview" area</li>
+        <li>Second we have a "read-only" area, which we can use to display the Markdown text to a user</li>
+        <li>Third we have a section in which we converted Markdown text as HTML. This is done server-side, using a helper library (showdown.js) and Rhino to transform the Markdown into HTML</li>
+    </ul>
+    <br/>
+    <h2>Editor</h2>
+    <p>This editor uses a tag (richTextEditor.scala.html) to encapsulate the relevant code.
+        The tag receives several parameters, including an ID to uniquely identify the editor window as to avoid collision when multiple edit frames are in one page.</p>
+    <p>The tag also requires a form input for mapping the data, as the editor is meant to be part of a Form element</p>
+    <br/>
+    @richTextEditor(
+        "short",
+        sampleForm("text"),
+        '_label -> "Sample Editor Label",
+        '_error -> sampleForm.globalError
+    )
+    <br/>
+    <hr/>
+    <h2>Read Mode</h2>
+    <p>The read-only mode uses a tag (markdownShow.scala.html) to encapsulate the relevant code.
+            The tag receives several parameters, including an ID to uniquely identify the window as to avoid collision when multiple "viewers" are in one page.</p>
+    <br/>
+    <h4>Viewer:</h4>
+    @markdownShow("viewer", markdownText)
+    <br/>
+    <hr/>
+    <h2>HTML generated server-side</h2>
+    <p>This section shows the same content used in the "read mode" above, but the content has been converted to HTML in the server, instead of using the browser and javascript.
+        This may be an alternative for some situations, although it is more taxing on the server</p>
+    <br/>
+    <div>
+        @Html(markdownAsHtml)
+    </div>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("Markdown");
+
+    });
+</script>
+
+    
+}

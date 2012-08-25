@@ -12,6 +12,7 @@ The sample uses code from the following projects:
 * http://gridster.net/
 * https://github.com/kicksend/mailcheck
 * https://github.com/codejoust/session.js
+* http://code.google.com/p/pagedown/
 
 ## License
 

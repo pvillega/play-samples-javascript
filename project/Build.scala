@@ -14,8 +14,9 @@ object ApplicationBuild extends Build {
     )
 
     val main = PlayProject(appName, appVersion, appDependencies, mainLang = SCALA).settings(
-      // Add your own project settings here      
-	  //required for i18n in javascript
+      // we only compile mainless.less, the other less files are used via imports
+      lessEntryPoints <<= baseDirectory(_ / "app" / "assets" / "stylesheets" ** "mainless.less"),
+	    //required for i18n in javascript
       resolvers += "julienrf.github.com" at "http://julienrf.github.com/repo/"
     )
 

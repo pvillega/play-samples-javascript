@@ -15,6 +15,7 @@ The sample uses code several projects, including:
 * http://code.google.com/p/pagedown/
 * http://d3js.org/
 * http://thejit.org/
+* https://github.com/JoelSutherland/LESS-Prefixer
 
 ## License
 

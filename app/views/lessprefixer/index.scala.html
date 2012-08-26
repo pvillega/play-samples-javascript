@@ -1,0 +1,53 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+@* Less Prefixer uses a less file ocated under 'assets/stylesheets/prefixer.less'  *@
+
+@main("Less Prefixer") {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows a sample of use of Less Prefixer, a set of Less mixins that automatically add the proper browser prefix to CSS styles..</p>
+    <p>The code uses the library at <a href="https://github.com/JoelSutherland/LESS-Prefixer">https://github.com/JoelSutherland/LESS-Prefixer</a>.</p>
+    <p>Each mixin uses the correct vendor prefixes as indicated by CSS3Please.com.</p>
+    <p>To use it in play we need to follow these steps:</p>
+    <ul>
+        <li>Copy 'prefixer.less' into our 'assets/stylesheets' folder</li>
+        <li>Add an entry to Build.scala to avoid compilation of the prefixer file by setting the less files to compile.</li>
+        <li>Use the Less mixins</li>
+    </ul>
+    <br/>
+    <h3>How does it work?</h3>
+    <p>As a rule, you can use the CSS properties you would expect just by adding a '.' to start them and putting arguments afterwards.</p>
+    <pre>
+        <code>
+            div {
+            .box-shadow(0px 0px 10px rgba(255,0,0,.5));
+            }
+        </code>
+    </pre>
+    <p>Which then gets converted, after compilation, into:.</p>
+    <pre>
+        <code>
+            div {
+                -webkit-box-shadow: 0px 0px 10px rgba(255,0,0,.5);
+                -moz-box-shadow: 0px 0px 10px rgba(255,0,0,.5);
+                box-shadow: 0px 0px 10px rgba(255,0,0,.5);
+            }
+
+        </code>
+    </pre>
+    <p>The following element has been styled using prefixer:</p>
+    <div id="lessprefixer">Test element</div>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("LessPrefixer");
+
+    });
+</script>
+
+    
+}

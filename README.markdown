@@ -2,7 +2,7 @@
 
 This project contains samples on some Javascript libraries as well as UI components, using Play Framework (Scala) v.2.x
 
-The aim is to have a reference implementation to be used later on if these elements are needed in a project.
+The aim is to have both a list of interesting tools and a reference implementation to be used later on if these elements are needed in a project.
 
 ## References
 
@@ -14,6 +14,7 @@ The sample uses code several projects, including:
 * https://github.com/codejoust/session.js
 * http://code.google.com/p/pagedown/
 * http://d3js.org/
+* http://thejit.org/
 
 ## License
 

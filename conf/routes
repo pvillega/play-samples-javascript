@@ -31,6 +31,10 @@ GET     /google-analytics           controllers.GoogleAnalytics.index
 # D3js
 GET     /d3js                       controllers.D3js.index
 
+# The JIT
+GET     /thejit                     controllers.TheJit.index
+
+
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
 

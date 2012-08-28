@@ -32,10 +32,14 @@ GET     /google-analytics           controllers.GoogleAnalytics.index
 GET     /d3js                       controllers.D3js.index
 
 # The JIT
-GET     /the-jit                     controllers.TheJit.index
+GET     /the-jit                    controllers.TheJit.index
 
 # Less Prefixer
-GET     /less-prefixer                     controllers.LessPrefixer.index
+GET     /less-prefixer              controllers.LessPrefixer.index
+
+# Geolocation
+GET     /geolocation                controllers.Geolocation.index
+
 
 
 # Map static resources from the /public folder to the /assets URL path

@@ -1,0 +1,76 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+
+@main("Geolocation") {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows a sample of use of Geolocation via HTML 5.</p>
+    <p>The code uses Modernizr to detect if Geolocation is available in the browser. If it is, the current location is shown, otherwise an error is displayed..</p>
+    <p>You can find more information at <a href="http://diveintohtml5.info/geolocation.html">http://diveintohtml5.info/geolocation.html</a>.</p>
+    <p>Please check the source code to see how this sample works.</p>
+    <br/>
+    <form>
+        <legend>Location details</legend>
+        <label>High Accuracy:</label>
+        <input type="checkbox" id="highacc"/>
+        <label>Timeout (ms):</label>
+        <input type="text" id="timeout" value="0" />
+        <label>Oldest cached data accepted (ms):</label>
+        <input type="text" id="cachetime" value="0" />
+        <br/>
+        <input type="button" value="Find me!" onclick="get_location();"/>
+        <br/><br/>
+        <label>Location:</label>
+        <span id="locationSpan"></span>
+    </form>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("Geolocation");
+    });
+
+    // Callback method, will receive the location (if user allows so we can process the data)
+    function show_map(position) {
+        // get position
+        var latitude = position.coords.latitude;
+        var longitude = position.coords.longitude;
+        var altitude = position.coords.altitude;
+        var accuracy = position.coords.accuracy;
+        var tmstmp = new Date(position.timestamp).toLocaleString();
+
+        // let's show data
+        $('#locationSpan').text("Your position at ["+tmstmp+"] is lat:["+latitude+"] long:["+longitude+"] with accuracy:+/-["+accuracy+"]m. Your altitude is "+ ((altitude == null)?"not available": altitude+"m"));
+    }
+
+    // Manage errors
+    function handle_error(err) {
+        if (err.code == 1) {
+            // user said no!
+            $('#locationSpan').text("User denied Geolocation request");
+        } else if(err.code == 2) {
+            // Position unavailable
+            $('#locationSpan').text("Due to a network issue your position can't be located");
+        } else if(err.code == 3) {
+            $('#locationSpan').text("Geolocation request timeout");
+        } else {
+            $('#locationSpan').text("Geolocation request error:"+err.message);
+        }
+    }
+
+    //Get location!
+    function get_location() {
+        if (Modernizr.geolocation) {
+             navigator.geolocation.getCurrentPosition(show_map, handle_error, {maximumAge: $('#cachetime').val(), timeout: $('#timeout').val(), enableHighAccuracy: $('#highacc').is(':checked')});
+        } else {
+            // no native support
+            $('#locationSpan').text("Geolocation not available in this browser");
+        }
+    }
+</script>
+
+    
+}

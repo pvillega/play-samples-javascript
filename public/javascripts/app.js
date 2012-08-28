@@ -15,6 +15,7 @@ function setNavbar(id) {
     $('#menuD3js').removeClass('active');
     $('#menuTheJit').removeClass('active');
     $('#menuLessPrefixer').removeClass('active');
+    $('#menuGeolocation').removeClass('active');
     //set given one
     $("#menu"+id).addClass('active');
 }

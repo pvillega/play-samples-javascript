@@ -1,0 +1,62 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+
+@main("Offline") {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows a sample of use of Offline Web Application via HTML 5.</p>
+    <p>The code uses Modernizr to detect if Offline Web Mode is available in the browser.</p>
+    <p>You can find more information at <a href="http://diveintohtml5.info/offline.html">http://diveintohtml5.info/offline.html</a>.</p>
+    <p>Please check the source code to see how this sample works.</p>
+    <p>All pages include in the HTML tag a reference to the <a href="@routes.Offline.cacheFile()">cache manifest</a>, which defines resources to store locally for the website to work offline.</p>
+    <p>The manifest contains some headers that define properties on the resources listed:</p>
+    <ul>
+        <li>CACHE: resources available offline</li>
+        <li>NETWORK: resources that MUST NOT be cached, only available when online. If * any resource not in cache will be assumed to be available online.</li>
+        <li>FALLBACK: what to do if a resource wasn't cached but should have been. Matches regexp with a path</li>
+    </ul>
+    <br/>
+    <form>
+        <legend>Cached data details</legend>
+        <label>Offline Cache available?</label>
+        <span id="statusSpan"></span>
+        <br/>
+        <span id="cacheDataSpan"></span>
+    </form>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("Offline");
+        initOffline();
+    });
+
+
+    //start offline mode
+    function initOffline() {
+        if (Modernizr.applicationcache) {
+            // window.applicationCache is available!
+            $('#statusSpan').text("Offline Web IS available in this browser");
+            $('#cacheDataSpan').text(window.applicationCache.status);
+        } else {
+            // no native support for offline :(
+            $('#statusSpan').text("Offline Web IS NOT available in this browser");
+        }
+    }
+
+    //update notice when new cache version found
+    function onUpdateReady() {
+        $('#cacheDataSpan').text("New cache version found");
+    }
+    window.applicationCache.addEventListener('updateready', onUpdateReady);
+
+    //search for cache
+
+
+</script>
+
+    
+}

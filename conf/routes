@@ -46,6 +46,9 @@ GET     /web-workers                controllers.WebWorkers.index
 # LocalStorage
 GET     /local-storage              controllers.LocalStorage.index
 
+# Offline
+GET     /offline-web                controllers.Offline.index
+GET     /offline-web/cache          controllers.Offline.cacheFile
 
 
 # Map static resources from the /public folder to the /assets URL path

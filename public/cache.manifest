@@ -1,0 +1,22 @@
+CACHE MANIFEST
+# version 1 - version number changes ensures the browser doesn't cache the manifest, to avoid stale cache configuration
+# network section: resources that can't be cached
+# if using * instead of entries, all resources not found in cache will be assumed to be downloadable (never offline)
+NETWORK:
+/assets/javascripts/jit.js
+/assets/javascripts/jit-yc.js
+# list of resources to store in cache
+CACHE:
+/assets/stylesheets/jquery.gridster.min.css
+/assets/stylesheets/main.css
+/assets/stylesheets/pagedown.min.css
+/assets/javascripts/app.js
+/assets/javascripts/worker.js
+/assets/javascripts/showdown.js
+/assets/javascripts/pagedown.min.js
+/assets/javascripts/mailcheck.min.js
+/assets/javascripts/json2.js
+/assets/javascripts/jquery-1.7.1.min.js
+# what to do for a given path if we are offline and the resources are not in cache
+FALLBACK:
+/ /offline.html

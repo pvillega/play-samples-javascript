@@ -43,6 +43,9 @@ GET     /geolocation                controllers.Geolocation.index
 # WebWorkers
 GET     /web-workers                controllers.WebWorkers.index
 
+# LocalStorage
+GET     /local-storage              controllers.LocalStorage.index
+
 
 
 # Map static resources from the /public folder to the /assets URL path

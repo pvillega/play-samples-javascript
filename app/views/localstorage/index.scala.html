@@ -1,0 +1,67 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+
+@main("Local Storage") {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows a sample of use of Local Storage via HTML 5.</p>
+    <p>The code uses Modernizr to detect if Local Storage is available in the browser. If it is, .</p>
+    <p>You can find more information at <a href="http://diveintohtml5.info/storage.html">http://diveintohtml5.info/storage.html</a>.</p>
+    <p>Please check the source code to see how this sample works.</p>
+    <p>Write text in the textarea. You can force a save or a removal of data via the corresponding buttons. When you refresh the page it will still be displayed at the bottom.</p>
+    <br/>
+    <form>
+        <legend>Local Storage</legend>
+        <label>Type text to store:</label>
+        <textarea id="textAdded" rows="15" cols="80"></textarea>
+        <br/>
+        <input type="button" value="Append and reload!" onclick="save(); "/>
+        <input type="button" value="Clean data!" onclick="clean(); "/>
+        <br/><br/>
+        <label>Stored data retrieved from local storage:</label>
+        <p id="storedSpan"></p>
+    </form>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("LocalStorage");
+        initLocalStorage();
+    });
+
+    var storageKey = "myLocalStorage";
+
+    function save() {
+        var data = localStorage.getItem(storageKey);
+        data = data + '\n' + $('#textAdded').val();
+        localStorage.setItem(storageKey, data);
+        window.setTimeout('location.reload()', 1000);
+    }
+
+    // clears our local storage and sets a default string as data
+    function clean() {
+        localStorage.removeItem(storageKey);
+        localStorage.setItem(storageKey, "Data was removed");
+        window.setTimeout('location.reload()', 1000);
+    }
+
+    function initLocalStorage() {
+        if (Modernizr.localstorage) {
+            // window.localStorage is available!
+            // retrieve stored data
+            var data = localStorage.getItem(storageKey);
+            $('#storedSpan').text(data);
+
+        } else {
+            // no native support for HTML5 storage :(
+            $('#storedSpan').text("Local Storage not available in this browser");
+        }
+    }
+
+</script>
+
+    
+}

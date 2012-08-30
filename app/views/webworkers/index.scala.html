@@ -1,0 +1,52 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+
+@main("Web Workers") {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows a sample of use of Web Workers via HTML 5.</p>
+    <p>The code uses Modernizr to detect if Web Workers are available in the browser. If they are supported a background job will be launched when pressing the button. No polyfill is provided for Web Workers if they are not natively supported.</p>
+    <p>You can find more information at <a href="http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html">http://www.whatwg.org/specs/web-apps/current-work/multipage/workers.html</a>.</p>
+    <p>Please check the source code to see how this sample works.</p>
+    <p>The worker will run a background process to find prime numbers, a very basic example. The worker code is available in a file attached to the worker on creation (worker.js) and it communicates with the page via events.</p>
+    <p>More advanced usages of workers allow for input/output in the background (i.e.: reading from a stream from a page and updating the view) or coordinating content between multiple windows/tabs in the current browser.</p>
+    <br/>
+    <form>
+        <legend>Web Workers</legend>
+        <input type="button" value="Launch!" onclick="startWorkers();"/>
+        <label>You can do other tasks like write in this form while the workers do their job:</label>
+        <textarea rows="15" cols="80"></textarea>
+        <br/>
+        <label>Web worker result:</label>
+        Biggest prime found:&nbsp;<span id="wwMessages"></span>
+    </form>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("WebWorkers");
+    });
+
+    //Get Web Workers running!
+    function startWorkers(){
+        if (Modernizr.webworkers) {
+            // window.Worker is available!
+            var worker = new Worker('@routes.Assets.at("javascripts/worker.js")');
+            // each time the worker sends a message, this happens
+            worker.onmessage = function (event) {
+                //add the data to the span
+                //not using JQuery as vanilla js is more performant (jquery may block itself and hang the window!)
+                document.getElementById('wwMessages').textContent = event.data;
+            };
+        } else {
+            // no native support for web workers :(
+            $('#wwMessages').append(">Web Workers not available in this browser, demo can't be run.");
+        }
+    }
+</script>
+
+    
+}

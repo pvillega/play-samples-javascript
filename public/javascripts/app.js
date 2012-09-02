@@ -19,6 +19,7 @@ function setNavbar(id) {
     $('#menuWebWorkers').removeClass('active');
     $('#menuLocalStorage').removeClass('active');
     $('#menuOffline').removeClass('active');
+    $('#menuEmailBoilerplate').removeClass('active');
 
     //set given one
     $("#menu"+id).addClass('active');

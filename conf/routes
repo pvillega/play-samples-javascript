@@ -34,6 +34,9 @@ GET     /d3js                       controllers.D3js.index
 # The JIT
 GET     /the-jit                    controllers.TheJit.index
 
+# Email Boilerplate
+GET     /email-boilerplate          controllers.EmailBoilerplate.index
+
 # Less Prefixer
 GET     /less-prefixer              controllers.LessPrefixer.index
 

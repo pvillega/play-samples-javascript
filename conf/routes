@@ -40,6 +40,9 @@ GET     /email-boilerplate          controllers.EmailBoilerplate.index
 # Less Prefixer
 GET     /less-prefixer              controllers.LessPrefixer.index
 
+# Semantic Elements
+GET     /semantic-elements          controllers.SemanticElements.index
+
 # Geolocation
 GET     /geolocation                controllers.Geolocation.index
 

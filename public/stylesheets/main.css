@@ -108,3 +108,18 @@ body {
     font-family:Verdana, Geneva, Arial, Helvetica, sans-serif;
     padding:7px;
 }
+
+/* Styles for semantic elements list */
+
+dl.col dt, dl.col dd {
+    padding-bottom: 1.75em;
+}
+
+dl.col dd {
+    margin-left: 7em;
+}
+
+dl.col dt {
+    clear: left;
+    float: left;
+}

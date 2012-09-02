@@ -21,6 +21,7 @@ function setNavbar(id) {
     $('#menuOffline').removeClass('active');
     $('#menuEmailBoilerplate').removeClass('active');
     $('#menuSemanticElements').removeClass('active');
+    $('#menuForms').removeClass('active');
 
     //set given one
     $("#menu"+id).addClass('active');

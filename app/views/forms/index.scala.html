@@ -1,0 +1,78 @@
+@()(implicit request: play.api.mvc.RequestHeader)
+
+
+@main("HTML5 Form") {
+
+<div class="row">
+    <div class="span12">
+    <p>This page shows a sample of use of Forms in HTML 5.</p>
+    <p>You can find more information at <a href="http://diveintohtml5.info/forms.html">http://diveintohtml5.info/forms.html</a>.</p>
+    <p>The code displays a form which contains:</p>
+    <ul>
+        <li>Autofocus on the first element (fallback options are not shown, check <a href="http://diveintohtml5.info/forms.html">http://diveintohtml5.info/forms.html</a> for a list of possible fallbacks)</li>
+        <li>An input text with placeholder text</li>
+        <li>All the semantic HTML 5 elements, which will be rendered using browser capabilities (that is, if the browser supports them, you'll see a special render) </li>
+    </ul>
+    <p>On submit the HTML 5 validations will automatically be triggered (try to put a non-valid URL or Email, for example)</p>
+    <p>Be aware that some elements, like 'number' or 'range' provide (if supported) Javascript methods to obtain the values directly as numbers (no need to cast from String) or tu modify the value via code.</p>
+    <p>Please check the source code to see how this sample works.</p>
+    <br/>
+    <form>
+        <legend>HTML5 Form Elements</legend>
+        <label>Autofocus field:</label>
+        <input name="autofocusSample" autofocus>
+
+        <label>Placeholder:</label>
+        <input name="placeholderSample" placeholder="This is a placeholder text">
+
+        <label>Required field:</label>
+        <input required>
+
+        <label>Email:</label>
+        <input type="email">
+
+        <label>Url:</label>
+        <input type="url">
+
+        <label>Number:</label>
+        <input type="number" min="0" maxlength="100" step="1" value="6">
+
+        <label>Range:</label>
+        <input type="range" min="0" maxlength="100" step="1" value="6">
+
+        <label>Date:</label>
+        <input type="date">
+
+        <label>Date Time:</label>
+        <input type="datetime">
+
+        <label>Date Time (Local):</label>
+        <input type="datetime-local">
+
+        <label>Month:</label>
+        <input type="month">
+
+        <label>Time:</label>
+        <input type="time">
+
+        <label>Search:</label>
+        <input type="search">
+
+        <label>Color picker:</label>
+        <input type="color">
+
+        <br/>
+        <input type="submit">
+    </form>
+
+    </div>
+</div>
+
+<script>
+    $(function(){
+        setNavbar("Form");
+    });
+</script>
+
+    
+}
